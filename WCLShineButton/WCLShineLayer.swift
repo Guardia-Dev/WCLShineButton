@@ -77,7 +77,7 @@ class WCLShineLayer: CALayer, CAAnimationDelegate {
     
     //MARK: Privater Methods
     private func initLayers() {
-        shapeLayer.fillColor = UIColor.white.cgColor
+        shapeLayer.fillColor = UIColor.clear.cgColor
         shapeLayer.strokeColor = fillColor.cgColor
         shapeLayer.lineWidth = 1.5
         addSublayer(shapeLayer)
