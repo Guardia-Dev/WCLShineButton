@@ -28,6 +28,10 @@ import UIKit
 @IBDesignable
 public class WCLShineButton: UIControl {
     
+    /// 点击扩展偏移量
+    public var clickOffsetX: CGFloat = 0
+    public var clickOffsetY: CGFloat = 0
+    
     /// 更多的配置参数
     public var params: WCLShineParams {
         didSet {
@@ -135,6 +139,12 @@ public class WCLShineButton: UIControl {
 //            isSelected = clickLayer.clicked
 //            sendActions(for: .valueChanged)
 //        }
+    }
+    
+    public override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        var _bounds = bounds
+        _bounds = _bounds.insetBy(dx: -clickOffsetX, dy: -clickOffsetY)
+        return _bounds.contains(point)
     }
     
     //MARK: Privater Methods
