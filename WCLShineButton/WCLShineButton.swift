@@ -123,11 +123,18 @@ public class WCLShineButton: UIControl {
                 self?.sendActions(for: .valueChanged)
             }
             shineLayer.startAnim()
-        }else {
-            clickLayer.clicked = !clickLayer.clicked
-            isSelected = clickLayer.clicked
-            sendActions(for: .valueChanged)
+        } else {
+            shineLayer.endAnim = { [weak self] in
+                self?.clickLayer.startAnim()
+                self?.sendActions(for: .valueChanged)
+            }
+            shineLayer.startAnim()
         }
+//        else {
+//            clickLayer.clicked = !clickLayer.clicked
+//            isSelected = clickLayer.clicked
+//            sendActions(for: .valueChanged)
+//        }
     }
     
     //MARK: Privater Methods
